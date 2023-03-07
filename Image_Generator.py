@@ -5,8 +5,8 @@ from PIL import Image
 size = 196, 42
 im = Image.new("RGB",size)
 
-FOLDER = "Circuit/"
-
+RETRIEVAL_FOLDER = "Circuit/"
+DESTINATION_FOLDER = "Tileset Practice/"
 
 ## TIMING DECORATOR - @tictoc
 def tictoc(func):
@@ -18,7 +18,7 @@ def tictoc(func):
     return wrapper
 
 
-def tileSetGenerator(directory=FOLDER):
+def tileSetGenerator(directory=RETRIEVAL_FOLDER):
     imageSet = listdir(directory)
     imageSetDICT = {}
     for tile in imageSet:
@@ -31,7 +31,7 @@ coordinate_x, coordinate_y = 0, 0
 
 
 for xlimit in range(14):
-    activeImage = Image.open(f"{FOLDER}/{imageSet[xlimit]}")
+    activeImage = Image.open(f"{RETRIEVAL_FOLDER}/{imageSet[xlimit]}")
     activeImage.copy()
 
     for ylimit in range(3): 
@@ -42,7 +42,8 @@ for xlimit in range(14):
     coordinate_x += 14
 
 im.show()
-# im.save("dskewgridFULL.png")
+im.save(f"{DESTINATION_FOLDER}/TilesetX3.png")
+
 
 
 
